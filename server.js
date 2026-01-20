@@ -2,15 +2,25 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware pour servir les fichiers statiques
+// Servir les fichiers statiques
 app.use(express.static('public'));
 
-// Route principale
-app.get('/', (req, res) => {
+// Routes API pour le pairing
+app.use(express.json());
+
+app.post('/api/pair', (req, res) => {
+    const { code } = req.body;
+    console.log(`Code reçu: ${code}`);
+    // Ici, tu intègreras avec ton bot
+    res.json({ success: true, message: 'Code reçu' });
+});
+
+// Toutes les autres routes vont à index.html
+app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-// Démarrer le serveur
 app.listen(PORT, () => {
-    console.log(`🚀 Serveur en ligne sur le port ${PORT}`);
+    console.log(`✅ Site de pairing en ligne: http://localhost:${PORT}`);
+    console.log(`📡 Mode: ${process.env.NODE_ENV || 'development'}`);
 });
