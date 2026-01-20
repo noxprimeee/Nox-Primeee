@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pairing Premium - Bot WhatsApp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header premium-header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>🤖 BotPair Premium</h1>
+            </div>
+            <a href="/premium" class="premium-badge">
+                <i class="fas fa-crown"></i> PASSER EN PREMIUM
+            </a>
+        </div>
+
+        <div class="pairing-card">
+            <div class="card-header">
+                <h2><i class="fas fa-link"></i> Appairage WhatsApp</h2>
+                <p class="subtitle">Connectez votre compte WhatsApp en 30 secondes</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('free')">
+                    <i class="fas fa-user"></i> Version Gratuite
+                </button>
+                <button class="tab premium-tab" onclick="showTab('premium')">
+                    <i class="fas fa-crown"></i> Version Premium
+                </button>
+            </div>
+
+            <!-- Version Gratuite -->
+            <div id="free-tab" class="tab-content active">
+                <div class="features">
+                    <p><i class="fas fa-check-circle"></i> 1 session active</p>
+                    <p><i class="fas fa-check-circle"></i> Commandes de base</p>
+                    <p><i class="fas fa-times-circle"></i> Pas de fonctionnalités avancées</p>
+                </div>
+                
+                <button id="generate-free-btn" class="btn-generate" onclick="generatePairingCode(false)">
+                    <i class="fas fa-key"></i> Générer un Code d'Appairage
+                </button>
+            </div>
+
+            <!-- Version Premium -->
+            <div id="premium-tab" class="tab-content">
+                <div class="premium-features">
+                    <p><i class="fas fa-star"></i> Sessions illimitées</p>
+                    <p><i class="fas fa-star"></i> Toutes les commandes</p>
+                    <p><i class="fas fa-star"></i> Support prioritaire</p>
+                    <p><i class="fas fa-star"></i> Mises à jour exclusives</p>
+                </div>
+                
+                <div class="premium-required">
+                    <p><i class="fas fa-lock"></i> Version premium requise</p>
+                    <a href="/premium" class="btn-premium">
+                        <i class="fas fa-crown"></i> Obtenir le Premium
+                    </a>
+                </div>
+            </div>
+
+            <!-- Code d'Appairage -->
+            <div id="pairing-section" class="hidden">
+                <div class="code-display">
+                    <h3><i class="fas fa-shield-alt"></i> Votre Code de Sécurité</h3>
+                    <div class="code-box" id="pairing-code">
+                        <!-- Code apparaîtra ici -->
+                    </div>
+                    <p class="code-hint">Ce code expirera dans <span id="countdown">05:00</span></p>
+                    
+                    <div class="instructions">
+                        <h4><i class="fas fa-list-ol"></i> Instructions :</h4>
+                        <ol>
+                            <li>Ouvrez WhatsApp sur votre téléphone</li>
+                            <li>Envoyez un message au bot avec le code : <code>.pair VOTRE-CODE</code></li>
+                            <li>Attendez la confirmation sur cette page</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="pairing-status">
+                    <div class="status-waiting">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>En attente d'appairage...</p>
+                    </div>
+                </div>
+
+                <div class="qr-alternative">
+                    <p><i class="fas fa-qrcode"></i> Vous préférez le QR Code ?</p>
+                    <button class="btn-secondary" onclick="showQRAlternative()">
+                        Afficher le QR Code
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-connected hidden" id="connected-section">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>✅ Appairage Réussi !</h3>
+                <p>Votre compte WhatsApp est maintenant connecté au bot.</p>
+                <div class="session-info">
+                    <p><strong>ID Session :</strong> <span id="session-id"></span></p>
+                    <p><strong>Expire dans :</strong> 24 heures</p>
+                </div>
+                <button class="btn-dashboard" onclick="goToDashboard()">
+                    <i class="fas fa-tachometer-alt"></i> Accéder au Dashboard
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 BotPair Premium • <a href="/terms">Conditions d'utilisation</a> • <a href="/privacy">Politique de confidentialité</a></p>
+            <p class="server-status">
+                <i class="fas fa-server"></i> Statut serveur : <span class="online">● En ligne</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
