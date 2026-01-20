@@ -1,0 +1,20 @@
+[
+    {
+        "code": "PREMIUM2024",
+        "duration": 30,
+        "used": false,
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "code": "BOTVIP50",
+        "duration": 50,
+        "used": false,
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "code": "LIFETIMEVIP",
+        "duration": 9999,
+        "used": false,
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+]
