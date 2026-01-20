@@ -1,13 +1,7 @@
 services:
   - type: web
-    name: bot-pairing-premium
+    name: queen-primeee
     env: node
     buildCommand: npm install
     startCommand: npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 3000
-      - key: SECRET_KEY
-        generateValue: true
+    autoDeploy: true
